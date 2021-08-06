@@ -1,4 +1,4 @@
-# This is a sample Python script, modified in the cleanup branch
+# This is a sample Python script, modified in the cleanup branch, and now in PyCharm
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
