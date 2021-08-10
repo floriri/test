@@ -22,7 +22,7 @@ import pandas as pd
 
 def read_data(filename):
     """
-    Read in our data from a CSV file to Pandas Dataframe..
+    Read in our data from a CSV file to Pandas Dataframe....
     """
     print("reading csv data")
     df = pd.read_csv(filename, sep=",", usecols=["Site name", "Address", "Zip", "Phone"])
