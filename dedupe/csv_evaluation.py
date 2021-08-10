@@ -22,17 +22,17 @@ import pandas as pd
 
 def read_data(filename):
     """
-    Read in our data from a CSV file to Pandas Dataframe
+    Read in our data from a CSV file to Pandas Dataframe..
     """
     print("reading csv data")
-    df = pd.read_csv(filename, sep=",", usecols=["Site name","Address", "Zip","Phone"])
+    df = pd.read_csv(filename, sep=",", usecols=["Site name", "Address", "Zip", "Phone"])
     # clean strings
-    for col in df.loc[:, df.dtypes == 'object']:
-        df[col] = df[col].str.replace("  +","")
+    for col in df.loc[:, df.dtypes == "object"]:
+        df[col] = df[col].str.replace("  +", "")
         df[col] = df[col].str.replace("\n", "")
         df[col] = df[col].str.strip().str.strip('""').str.strip("'").str.lower().str.strip()
     # clean integers
-    for col in df.loc[:, df.dtypes == 'float']:
+    for col in df.loc[:, df.dtypes == "float"]:
         df[col] = df[col].astype("Int64").astype(str)
         df.loc[df[col].str.startswith("<NA>"), col] = None
     return df
@@ -72,7 +72,9 @@ if __name__ == "__main__":
 
         # To train dedupe, we feed it a sample of records. If training file exists, use it
         if os.path.exists(training_file):
-            deduper.prepare_training(df_d.T.to_dict(), training_file=training_file, sample_size=15000)
+            deduper.prepare_training(
+                df_d.T.to_dict(), training_file=training_file, sample_size=15000
+            )
         else:
             deduper.prepare_training(df_d.T.to_dict(), sample_size=15000)
 
@@ -158,4 +160,3 @@ if __name__ == "__main__":
                     for key in canonical_keys:
                         row.append(None)
                 writer.writerow(row)
-
